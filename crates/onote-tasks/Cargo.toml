@@ -1,0 +1,10 @@
+[package]
+name = "onote-tasks"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+onote-metadata-links = { workspace = true }

@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Main window only; core event/window/app defaults. Dialogs are invoked from the Rust side, so no plugin permissions are granted to the webview.","local":true,"windows":["main"],"permissions":["core:default"]}}

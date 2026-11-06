@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "OpenNote",
+  "mainBinaryName": "OpenNote",
+  "version": "0.1.0",
+  "identifier": "app.opennote.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev -- --host 127.0.0.1 --port 4173 --strictPort",
+    "devUrl": "http://127.0.0.1:4173",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "OpenNote",
+        "width": 1440,
+        "height": 1024,
+        "minWidth": 900,
+        "minHeight": 640,
+        "resizable": true,
+        "zoomHotkeysEnabled": true,
+        "dragDropEnabled": false,
+        "additionalBrowserArgs": "--disable-gpu"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' ipc: http://ipc.localhost; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; frame-ancestors 'none'; worker-src 'self' blob:;",
+      "dangerousDisableAssetCspModification": false
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico"],
+    "publisher": "OpenNote contributors",
+    "copyright": "Copyright (c) 2026 OpenNote contributors. MIT License.",
+    "category": "Productivity",
+    "shortDescription": "Local-first Markdown notes",
+    "longDescription": "OpenNote is a local-first Markdown note app. Notes stay as plain files in a folder you choose.",
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper" },
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["SimpChinese", "English"],
+        "displayLanguageSelector": false,
+        "installerIcon": "icons/icon.ico",
+        "sidebarImage": "windows/installer-sidebar.bmp",
+        "headerImage": "windows/installer-header.bmp",
+        "installerHooks": "windows/hooks.nsh"
+      }
+    }
+  }
+}

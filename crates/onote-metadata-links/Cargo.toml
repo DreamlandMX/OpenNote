@@ -1,0 +1,11 @@
+[package]
+name = "onote-metadata-links"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+onote-domain = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+yaml-rust2 = "0.13"

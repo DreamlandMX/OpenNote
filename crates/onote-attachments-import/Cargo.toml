@@ -1,0 +1,9 @@
+[package]
+name = "onote-attachments-import"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+flate2 = "=1.1.10"
+serde = { workspace = true }

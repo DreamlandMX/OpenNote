@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+target/
+release/
+*.exe
+*.tsbuildinfo
+
+# Local tooling / AI assistant settings
+.claude/
+.vscode/
+.idea/
+
+# Logs and local env
+*.log
+npm-debug.log*
+*.local
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

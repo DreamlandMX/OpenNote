@@ -1,0 +1,59 @@
+/* PDF reader (LaTeX workspace). Tokens come from platform-shell/ui/tokens.css. */
+.pdf-pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; height: 100%; background: var(--surface); }
+.pdf-pane-empty { align-items: center; justify-content: center; color: var(--secondary); font-size: 13px; }
+.pdf-toolbar { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; min-height: 40px; padding: 4px 8px; border-block-end: 0.5px solid var(--border); font-size: 13px; }
+.pdf-toolbar button.icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: var(--radius-control); background: transparent; color: var(--text); }
+.pdf-toolbar button.icon:hover:not(:disabled) { background: var(--selection); }
+.pdf-toolbar button.icon[aria-pressed="true"] { background: var(--selection); }
+.pdf-toolbar button.icon:disabled { opacity: 0.4; }
+.pdf-name { font-weight: 600; max-width: 18ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdf-badge { padding: 1px 6px; border-radius: 999px; border: 0.5px solid var(--border); color: var(--secondary); font-size: 12px; }
+.pdf-spacer { flex: 1 1 auto; }
+.pdf-divider { width: 0.5px; height: 18px; margin-inline: 4px; background: var(--border); }
+.pdf-page { display: inline-flex; align-items: center; gap: 4px; color: var(--secondary); }
+.pdf-page input { width: 3.5em; text-align: center; padding: 2px 4px; }
+.pdf-zoom { min-width: 3.5em; text-align: center; color: var(--secondary); font-variant-numeric: tabular-nums; }
+.pdf-search { display: inline-flex; align-items: center; gap: 4px; color: var(--secondary); }
+.pdf-search input { width: 12em; padding: 2px 6px; }
+.pdf-matches { min-width: 5em; color: var(--secondary); font-size: 12px; }
+.pdf-error { margin: 0; padding: 6px 12px; border-block-end: 0.5px solid var(--border); color: var(--danger); font-size: 13px; }
+.pdf-loading { margin: 24px; color: var(--secondary); }
+.pdf-scroll { flex: 1 1 auto; overflow: auto; padding: 16px; background: var(--background); }
+.pdf-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.pdf-page-view { position: relative; margin: 0 auto 16px; background: #fff; box-shadow: 0 1px 3px rgb(0 0 0 / 0.18); }
+.pdf-page-view canvas { display: block; }
+
+/* Selectable text over the canvas; adapted from pdfjs-dist 6.4.299 web/pdf_viewer.css (.textLayer). */
+.pdf-page-view .textLayer {
+  color-scheme: only light; position: absolute; text-align: initial; inset: 0; overflow: clip; opacity: 1;
+  line-height: 1; letter-spacing: normal; word-spacing: normal; text-size-adjust: none; forced-color-adjust: none;
+  transform-origin: 0 0; caret-color: CanvasText; z-index: 0;
+  --user-unit: 1; --total-scale-factor: calc(var(--scale-factor) * var(--user-unit));
+  --min-font-size: 1; --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1 / var(--min-font-size));
+}
+.pdf-page-view .textLayer span, .pdf-page-view .textLayer br {
+  color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0% 0%; user-select: text;
+}
+.pdf-page-view .textLayer > :not(.markedContent), .pdf-page-view .textLayer .markedContent span:not(.markedContent) {
+  z-index: 1; --font-height: 0; font-size: calc(var(--text-scale-factor) * var(--font-height));
+  --scale-x: 1; --rotate: 0deg; transform: rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv));
+}
+.pdf-page-view .textLayer .markedContent { display: contents; }
+.pdf-page-view .textLayer ::selection { background: color-mix(in srgb, AccentColor, transparent 50%); color: transparent; }
+
+.pdf-page-content { display: contents; }
+.pdf-sync-mark { position: absolute; z-index: 3; background: color-mix(in srgb, var(--accent) 28%, transparent); outline: 1.5px solid var(--accent); border-radius: 2px; pointer-events: none; }
+.pdf-reader { position: fixed; z-index: 35; inset: 2vh 2vw; display: flex; flex-direction: column; min-height: 0; border: 0.5px solid var(--border); border-radius: var(--radius-dialog); background: var(--surface); box-shadow: 0 16px 48px rgb(0 0 0 / 28%); outline: none; overflow: hidden; }
+.pdf-reader-head { display: flex; align-items: center; gap: 12px; flex: none; padding: 8px 8px 8px 16px; border-block-end: 0.5px solid var(--border); }
+.pdf-reader-head h2 { margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; font-weight: 600; }
+.pdf-reader-note { flex: 1; min-width: 0; color: var(--secondary); font-size: 13px; }
+.pdf-reader-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.pdf-reader-actions button { display: inline-flex; align-items: center; gap: 6px; }
+.pdf-reader-close { justify-content: center; width: 36px; height: 36px; padding: 0; border: 0; background: transparent; color: var(--text); }
+.pdf-reader-body { flex: 1; min-height: 0; display: flex; }
+.pdf-reader-body > .pdf-pane { flex: 1; min-width: 0; }
+.pdf-reader .pdf-name { display: none; }
+/* A wrapped toolbar keeps its full height, so the search box stays reachable in a narrow pane. */
+.pdf-toolbar { flex: none; }
+.pdf-scroll { min-height: 0; }

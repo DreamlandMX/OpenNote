@@ -1,0 +1,45 @@
+[package]
+name = "src-tauri"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "OpenNote P0 native desktop host (Tauri 2, M11 platform-shell slice)"
+
+[lib]
+name = "opennote_desktop"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+sha2 = { workspace = true }
+onote-domain = { workspace = true }
+onote-vault-storage = { workspace = true }
+onote-history-backup = { path = "../crates/onote-history-backup" }
+onote-metadata-links = { workspace = true }
+onote-search = { workspace = true }
+onote-attachments-import = { workspace = true }
+onote-tasks = { workspace = true }
+onote-latex = { workspace = true }
+onote-diagnostics = { workspace = true }
+onote-latex-sandbox = { path = "../crates/onote-latex-sandbox" }
+# Already in Cargo.lock; inflates the pinned engine archive.
+flate2 = "=1.1.10"
+# Approved 2026-10-30: structural check of engine PDFs, run only in the
+# sandboxed `--latex-validate-pdf` mode. 0.45.0 (2026-09-08), not the 9-day-old
+# 0.46.0; default features (chrono clock, rayon) are not needed.
+lopdf = { version = "=0.45.0", default-features = false }
+# Approved 2026-10-31: sends a deleted folder that holds non-note files (a
+# LaTeX project) to the system recycle bin, where the user can restore it.
+trash = "=5.2.2"
+
+[dev-dependencies]
+tempfile = "3"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = ["Win32_Foundation", "Win32_Networking_WinHttp", "Win32_Storage_FileSystem", "Win32_System_Threading", "Win32_UI_Shell", "Win32_UI_WindowsAndMessaging"] }

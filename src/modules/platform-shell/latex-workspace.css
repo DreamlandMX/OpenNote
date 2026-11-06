@@ -1,0 +1,69 @@
+/* F45/F51/F52 LaTeX workspace: sources beside the PDF. Tokens from ui/tokens.css. */
+.latex-ws { position: fixed; z-index: 35; inset: 2vh 2vw; display: flex; flex-direction: column; min-width: 0; min-height: 0; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-dialog); box-shadow: 0 18px 48px rgb(0 0 0 / 24%); overflow: hidden; }
+.latex-ws-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 16px; border-block-end: 1px solid var(--border); }
+.latex-ws-head h2 { margin: 0; font-size: 17px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.latex-ws-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.latex-ws-actions button { display: inline-flex; align-items: center; gap: 6px; }
+.latex-ws-state { color: var(--secondary); font-size: 13px; }
+.latex-ws-close { min-width: 44px; min-height: 44px; justify-content: center; color: var(--text); background: transparent; border: 0; border-radius: var(--radius-control); }
+.latex-ws-close:disabled { opacity: 0.4; }
+.latex-ws-error { display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-block-end: 1px solid var(--border); color: var(--danger); font-size: 13px; }
+.latex-ws-error p { margin: 0; }
+.latex-ws-body { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(140px, 200px) minmax(0, 1fr) minmax(0, 1fr); }
+.latex-ws-files { overflow: auto; border-inline-end: 1px solid var(--border); padding: 6px; }
+.latex-ws-files ul { list-style: none; margin: 0; padding: 0; }
+.latex-ws-files button { display: flex; align-items: center; gap: 6px; width: 100%; padding: 5px 6px; border: 0; border-radius: var(--radius-control); background: transparent; color: var(--text); font-size: 13px; text-align: start; }
+.latex-ws-files button span:first-of-type { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.latex-ws-files button[aria-current="true"] { background: var(--selection); }
+.latex-ws-files button:disabled:not([aria-current="true"]) { color: var(--secondary); }
+.latex-ws-entry { margin-inline-start: auto; padding: 0 5px; border: 0.5px solid var(--border); border-radius: 999px; color: var(--secondary); font-size: 11px; }
+.latex-ws-source { display: flex; flex-direction: column; min-width: 0; min-height: 0; border-inline-end: 1px solid var(--border); }
+.latex-ws-path { display: flex; gap: 8px; align-items: center; min-height: 32px; padding: 4px 10px; border-block-end: 0.5px solid var(--border); color: var(--secondary); font-size: 12px; }
+.latex-ws-dirty { padding: 0 6px; border: 0.5px solid var(--border); border-radius: 999px; }
+.latex-ws-editor { flex: 1 1 60%; min-height: 0; resize: none; border: 0; padding: 10px 12px; font: 13px/1.5 var(--font-mono, ui-monospace, monospace); color: var(--text); background: var(--surface); tab-size: 2; }
+.latex-ws-editor:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.latex-ws-diagnostics { flex: 0 1 40%; min-height: 0; overflow: auto; border-block-start: 1px solid var(--border); padding: 6px 10px; font-size: 13px; }
+.latex-ws-result, .latex-ws-missing { margin: 4px 0; color: var(--secondary); }
+.latex-ws-diagnostics ul { list-style: none; margin: 0; padding: 0; }
+.latex-ws-diagnostics li { padding: 4px 0; border-block-end: 0.5px solid var(--border); }
+.latex-ws-diagnostics li[data-severity="error"] .latex-ws-where { color: var(--danger); }
+.latex-ws-diagnostics button { display: flex; gap: 8px; width: 100%; padding: 2px 0; border: 0; background: transparent; color: var(--text); text-align: start; }
+.latex-ws-diagnostics button:disabled { cursor: default; }
+.latex-ws-where { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.latex-ws-diagnostics pre { margin: 2px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--secondary); font-size: 12px; }
+.latex-ws-pdf { min-width: 0; min-height: 0; }
+@media (max-width: 900px) {
+  .latex-ws { inset: 0; border-radius: 0; }
+  .latex-ws-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr); overflow: auto; }
+  .latex-ws-files { max-height: 18vh; border-inline-end: 0; border-block-end: 1px solid var(--border); }
+  .latex-ws-source { border-inline-end: 0; min-height: 50vh; }
+  .latex-ws-pdf { min-height: 60vh; }
+}
+
+/* Live LaTeX: the workspace fills the window; source on the left, PDF on the right. */
+.latex-ws { inset: 0; border: 0; border-radius: 0; box-shadow: none; }
+.latex-ws-head { flex-wrap: nowrap; justify-content: flex-start; gap: 10px; min-height: 48px; padding: 6px 12px; }
+.latex-ws-head h2 { flex: none; max-width: 40%; font-size: 15px; }
+.latex-ws-head .latex-ws-state { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.latex-ws-icon { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; min-height: 32px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--secondary); }
+.latex-ws-icon:hover { background: var(--hover); color: var(--text); }
+.latex-ws-auto { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--secondary); white-space: nowrap; cursor: pointer; }
+.latex-ws-close { min-width: 36px; min-height: 36px; }
+.latex-ws-body[data-files='closed'] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.latex-ws-files { background: var(--navigation); }
+.latex-ws-editor { flex: 1 1 auto; min-height: 0; padding: 0; overflow: hidden; display: flex; }
+.latex-ws-editor .cm-editor { flex: 1; min-width: 0; height: 100%; background: var(--surface); }
+.latex-ws-editor .cm-editor.cm-focused { outline: none; }
+.latex-ws-editor .cm-scroller { font: 14px/1.6 var(--font-mono); }
+.latex-ws-editor .cm-gutters { background: var(--surface); border-inline-end: 0; color: var(--secondary); }
+.latex-ws-editor .cm-activeLine, .latex-ws-editor .cm-activeLineGutter { background: var(--hover); }
+.latex-ws-editor .cm-cursor { border-inline-start-color: var(--text); }
+.latex-ws-editor .cm-selectionBackground, .latex-ws-editor .cm-content ::selection { background: var(--selection); }
+.latex-ws-diagnostics { flex: none; max-height: 40%; padding: 0; }
+.latex-ws-diagnostics > summary { display: flex; align-items: center; gap: 6px; min-height: 34px; padding: 4px 12px; color: var(--secondary); cursor: pointer; list-style: none; }
+.latex-ws-diagnostics > summary::-webkit-details-marker { display: none; }
+.latex-ws-diagnostics > summary[data-problems='true'] { color: var(--danger); font-weight: 600; }
+.latex-ws-diagnostics[open] > summary .latex-ws-chevron { transform: rotate(90deg); }
+.latex-ws-diagnostics > :not(summary) { margin-inline: 12px; }
+.latex-ws-pdf { position: relative; }
+.latex-ws-updating { position: absolute; z-index: 2; inset-block-start: 10px; inset-inline-end: 14px; padding: 3px 10px; border-radius: 999px; background: var(--surface); border: 0.5px solid var(--border); color: var(--secondary); font-size: 12px; box-shadow: 0 4px 12px rgb(0 0 0 / 18%); }

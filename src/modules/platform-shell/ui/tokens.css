@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+  --background: #fbfbfa;
+  --navigation: #f7f7f5;
+  --text: #2f2e2a;
+  --secondary: #65645f;
+  --accent: #2f6b55;
+  --accent-contrast: #ffffff;
+  --selection: #ebebe8;
+  --border: #e6e6e3;
+  --focus: #1a6d46;
+  --danger: #b42318;
+  --danger-contrast: #ffffff;
+  --surface: #ffffff;
+  --hover: #f1f1ef;
+  --highlight: #fff3a3;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --radius-control: 6px;
+  --radius-dialog: 10px;
+
+  --ui-font-size: 14px;
+  --ui-line-height: 20px;
+  /* F29: the reading surface reads these; the settings screen overwrites them
+     with inline custom properties on the root element. */
+  --body-font-size: 16px;
+  --body-line-height: 26px;
+  --reading-measure: 65ch;
+  --display-size: 24px;
+
+  --sidebar-width: 240px;
+  --reading-max-width: 840px;
+  --topbar-height: 56px;
+
+  --font-ui: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'Malgun Gothic', 'Noto Sans Arabic', 'Noto Sans Devanagari', sans-serif;
+  --font-reading: Georgia, 'Times New Roman', 'Noto Serif', 'Source Han Serif SC', 'Noto Serif CJK SC', serif;
+  --font-mono: Consolas, 'Cascadia Mono', 'SF Mono', Menlo, monospace;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --background: #191919;
+  --navigation: #202020;
+  --text: #e6e6e4;
+  --secondary: #9e9e9b;
+  --accent: #86ead4;
+  --accent-contrast: #111111;
+  --selection: #2c2c2c;
+  --border: #2f2f2f;
+  --focus: #9ef2df;
+  --danger: #fda29b;
+  --danger-contrast: #111111;
+  --surface: #191919;
+  --hover: #262626;
+  --highlight: #5c4d12;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='system'] {
+    color-scheme: dark;
+    --background: #191919;
+    --navigation: #202020;
+    --text: #e6e6e4;
+    --secondary: #9e9e9b;
+    --accent: #86ead4;
+    --accent-contrast: #111111;
+    --selection: #2c2c2c;
+    --border: #2f2f2f;
+    --focus: #9ef2df;
+    --danger: #fda29b;
+    --danger-contrast: #111111;
+    --surface: #191919;
+  --hover: #262626;
+  --highlight: #5c4d12;
+  }
+}

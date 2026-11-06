@@ -1,0 +1,34 @@
+[package]
+name = "onote-latex-sandbox"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "Restricted process runner for the local LaTeX engine (AppContainer + Job Object)"
+
+[dependencies]
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_Security_Isolation",
+    "Win32_Storage_FileSystem",
+    "Win32_System_JobObjects",
+    "Win32_System_Pipes",
+    "Win32_System_Threading",
+    "Win32_System_Com",
+    "Win32_UI_Shell",
+] }
+
+# Test-only probe that tries to escape the sandbox; never shipped.
+[[bin]]
+name = "sandbox-probe"
+path = "src/bin/sandbox-probe.rs"
+test = false
+bench = false
+
+[dev-dependencies]
+tempfile = "3"
+sha2 = { workspace = true }
+hex = { workspace = true }
